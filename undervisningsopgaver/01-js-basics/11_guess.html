@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="da">
 
@@ -21,17 +20,19 @@
 
     <p>Gæt et tal mellem 0 og 20</p>
     <input type="text" id="gæt">
-    <button>Gæt!</button>
+    <button id="spil">Gæt!</button>
     <button id="nyt_spil">Nyt spil</button>
 
 
     <script>
-        const tilfaeldigtTal = Math.round(Math.random() * 20);
         let antalGæt = 0;
+        tal = tilfaeldigtTal = Math.round(Math.random() * 20);
 
         document.querySelector("button").addEventListener("click", guessTal);
+        document.querySelector("#nyt_spil").addEventListener("click", nytSpil);
 
         function guessTal(){
+            console.log(tilfaeldigtTal)
             antalGæt++;
             const guess = document.querySelector("#gæt").value;
             console.log("brugergæt", guess);
@@ -45,11 +46,12 @@
 
         }
 
-        document.querySelector("#nyt_spil").addEventListener("click", nytSpil);
 
         function nytSpil(){
-            console.log("nytSpil")
+            console.log("nytSpil");
             antalGæt = 0;
+            document.querySelector("#spil").addEventListener("click", guessTal);
+            tilfaeldigtTal = Math.round(Math.random() * 20);
         }
 
     </script>
