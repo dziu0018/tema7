@@ -6,34 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="">
-</head>
-
-<body>
-
-    <header>
-        <h1>Titel</h1>
-    </header>
-    <main>
-        <h2>Undertitel</h2>
-        <section id="section1">
-            <article id="article1">
-                <img src="https://placeimg.com/400/300/people">
-                <h3>Article 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quis ea, delectus illo ut nesciunt rem eveniet similique iste. Repellat enim impedit velit voluptates molestiae suscipit perferendis minus illum molestias?</p>
-            </article>
-
-            <article id="article2">
-                <img src="https://placeimg.com/400/300/any">
-                <h3>Article 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quis ea, delectus illo ut nesciunt rem eveniet similique iste. Repellat enim impedit velit voluptates molestiae suscipit perferendis minus illum molestias?</p>
-            </article>
-        </section>
-
-        <footer>
-            <h2>this is the footer</h2>
-        </footer>
-
-    </main>
     <style>
         main {
             padding-left: 10vw;
@@ -65,7 +37,8 @@
             padding: 10px;
         }
 
-        footer {
+        footer h2 {
+            padding: 10px 0;
             text-align: center;
         }
 
@@ -74,8 +47,72 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }
-
     </style>
-</body>
+</head>
 
-</html>
+<body>
+
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section id="section1">
+            <article id="article1">
+                <img src="https://placeimg.com/400/300/people">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quis ea, delectus illo ut nesciunt rem eveniet similique iste. Repellat enim impedit velit voluptates molestiae suscipit perferendis minus illum molestias?</p>
+            </article>
+
+            <article id="article2">
+                <img src="https://placeimg.com/400/300/any">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quis ea, delectus illo ut nesciunt rem eveniet similique iste. Repellat enim impedit velit voluptates molestiae suscipit perferendis minus illum molestias?</p>
+            </article>
+        </section>
+
+        <footer>
+            <h2>this is the footer</h2>
+        </footer>
+
+    </main>
+
+
+    <script>
+        const overskrift = document.querySelector("h1");
+        overskrift.textContent;
+        console.log(overskrift.textContent);
+
+        const underskrift = document.querySelector("h2");
+        underskrift.textContent;
+        console.log(underskrift.textContent);
+
+        const billede1 = document.querySelector("img");
+        billede1.src;
+        console.log(billede1.src);
+
+        const billede2 = document.querySelector("article:nth-child(2) img");
+        console.log(billede2);
+
+        const underrubrik = document.querySelector("h3");
+        underrubrik.textContent;
+        console.log(underrubrik.textContent);
+
+        const underrubrik1 = document.querySelector("article:nth-child(2) h3");
+        underrubrik1.textContent;
+        console.log(underrubrik1.textContent);
+
+        const paragraf = document.querySelector("p");
+        paragraf.textContent;
+        console.log(paragraf.textContent);
+
+        const paragraf2 = document.querySelector("article:nth-child(2) p");
+        paragraf2.textContent;
+        console.log(paragraf2.textContent);
+
+
+
+
+    </script>
+
+</body></html>
