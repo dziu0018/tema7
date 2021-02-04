@@ -6,15 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="">
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+        article{
+            background: white;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
+
    <section class="data-container"></section>
 
    <template>
 
-    <article id="liste">
-
+    <article>
+    <h3></h3>
+    <img>
+    <p>Type: </p>
+    <p>Levested: </p>
     </article>
 
     </template>
@@ -62,9 +79,16 @@
 
 
         console.log(dyr)
-            const listeVisning = document.querySelector("#liste");
+
+            const container = document.querySelector(".data-container");
+            const dyrTemplate = document.querySelector("template");
             dyr.forEach(dyr => {
-                listeVisning.innerHTML += `<p>${dyr.navn}, ${dyr.type} fra ${dyr.levested}</p>`
+                let klon = dyrTemplate.cloneNode(true).content;
+                klon.querySelector("h3").textContent = dyr.navn;
+                klon.querySelector("img").src = dyr.billede;
+                klon.querySelector("p").textContent = dyr.type;
+                klon.querySelector("p").nextElementSibling.textContent += dyr.levested;
+                container.appendChild(klon);
             })
 
             }
