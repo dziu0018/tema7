@@ -11,18 +11,18 @@
     <style>
 
         body{
-            background-color: #111f4a;
+            background: linear-gradient(#e66465, #9198e5);
         }
 
         h1{
             text-align: center;
-            color: white;
+            color: #ffffff;
+            background: linear-gradient(135deg, #209bd1 50%, #0a2f62);
 font-family: 'Poppins', sans-serif;
-
         }
 
         h2{
-            color: darkblue;
+            color: #d3507e;
             font-family: 'Poppins', sans-serif;
         }
         main {
@@ -34,10 +34,9 @@ font-family: 'Poppins', sans-serif;
         }
 
         article{
-            border: 5px black solid;
+            border: 5px #0a2f62 solid;
             border-radius: 10px;
             padding: 10px;
-            box-shadow: 1px 1px 15px white;
             background-color: white;
         }
 
@@ -68,6 +67,7 @@ font-family: 'Poppins', sans-serif;
   </template>
 
     <script>
+document.addEventListener("DOMContentLoaded", hentData);
 
         const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
 
@@ -102,10 +102,6 @@ font-family: 'Poppins', sans-serif;
             })
 
         }
-        hentData();
-
-
-
     </script>
 </body>
 </html>
