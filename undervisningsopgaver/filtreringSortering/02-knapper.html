@@ -27,11 +27,36 @@
             border-radius: 1em;
         }
 
+        button {
+            margin-left: 10px;
+            margin-right: 10px;
+            font-weight: 600;
+            border-radius: 30px;
+            height: 30px;
+            color: #000000;
+            background-color: #fd5a5a;
+        }
+
+        button:focus {
+            background-color: #ac1b1b;
+        }
+
+        button:active {
+            background-color: #3c3c3c;
+        }
+
     </style>
 
 </head>
 
 <body>
+
+    <nav>
+        <button data-troende="alle" class="valgt">Alle</button>
+        <button data-troende="ja">Troende</button>
+        <button data-troende="nej">Ikke troende</button>
+        <button data-troende="tvivler">Tvivler</button>
+    </nav>
 
     <section id="liste"></section>
 
@@ -56,13 +81,20 @@
         }
         document.addEventListener("DOMContentLoaded", start)
         let personer;
-        let filter = "ja";
+        let filter = "alle";
 
 
         // første funktion der kaldes efter DOM er loaded
         function start() {
-
+            const filterKnapper = document.querySelectorAll("nav button");
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerPersoner));
             loadJSON();
+        }
+
+        function filtrerPersoner() {
+            filter = this.dataset.troende;
+
+            visPersoner();
         }
 
         async function loadJSON() {
@@ -76,23 +108,22 @@
 
         //funktion der viser personer i liste view
         function visPersoner() {
-
             const dest = document.querySelector("#liste"); // container til articles med en person
             const skabelon = document.querySelector("template").content; // select indhold af html skabelon (article)
-
+            dest.textContent = "";
             personer.forEach(person => {
-                if (filter == person.troende) {
-                    // loop igennem json (personer)
+                console.log("Troende", person.troende);
+                // loop igennem json (personer)
+                if (filter == person.troende || filter == "alle") {
                     const klon = skabelon.cloneNode(true);
                     klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
                     klon.querySelector(".profil-billede").src = medieurl + person.billede;
+                    klon.querySelector(".titel").textContent = person.titel;
+                    klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
                     klon.querySelector(".troende").textContent += person.troende;
                     dest.appendChild(klon);
                 }
             })
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
