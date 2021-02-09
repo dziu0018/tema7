@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 1em;
+            margin: 2em;
+        }
+
+        .person {
+            padding: 1em;
+            border: 1px solid;
+            border-radius: 1em;
+        }
+
+        .valgt {
+            background-color: #ac1b1b;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Alle</h1>
+    </header>
+
+    <button>Back</button>
+    <section id="liste"></section>
+    <article class="person">
+        <h2 class="navn"></h2>
+        <p class="køn"></p>
+        <p class="titel"></p>
+        <p class="fødselsdag"></p>
+        <p class="troende"></p>
+        <img src="" alt="" class="billede">
+    </article>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+        const medieurl = "https://persongalleri-5d3e.restdb.io/media/";
+        let person;
+        const myHeaders = {
+            "x-apikey": "600fe9211346a1524ff12e31"
+        }
+        console.log("ID", id);
+        document.addEventListener("DOMContentLoaded", loadJSON);
+        async function loadJSON() {
+            const JSONData = await fetch(`https://persongalleri-5d3e.restdb.io/rest/persongalleri/${id}`, {
+                headers: myHeaders
+            });
+            person = await JSONData.json();
+            console.log("Personer", person);
+            visPerson(person);
+        }
+
+        function visPerson() {
+            document.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
+            document.querySelector(".billede").src = medieurl + person.billede;
+            document.querySelector(".titel").textContent = person.titel;
+            const string = person.fødselsdag;
+            const pattern = /[0-9][0-9][0-9][0-9][-][0-9][0-9][-][0-9][0-9]/;
+            const result = string.match(pattern);
+            document.querySelector(".fødselsdag").textContent = result;
+            document.querySelector(".troende").textContent = "troende: " + person.troende;
+            document.querySelector("button").addEventListener("click", tilbageTilPersonGalleri);
+        }
+
+        function tilbageTilPersonGalleri() {
+            history.back();
+        }
+    </script>
+
+</body></html>
