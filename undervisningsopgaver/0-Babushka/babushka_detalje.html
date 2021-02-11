@@ -95,7 +95,6 @@
 
 
         }
-
     </style>
 
 </head>
@@ -106,15 +105,14 @@
         <header>
         </header>
 
-        <section id="liste"></section>
 
         <article>
-             <img src="" alt="mad" class="billede">
-                <h2 class="navn"></h2>
-                <p class="pris"></p>
-                <p class="kortbeskrivelse"></p>
-                <p class="langbeskrivelse"></p>
-                <p class="oprindelsesregion"></p>
+            <img src="#" alt="mad" class="billede">
+            <h2 class="navn"></h2>
+            <p class="pris"></p>
+            <p class="kortbeskrivelse"></p>
+            <p class="langbeskrivelse"></p>
+            <p class="oprindelsesregion"></p>
         </article>
         <button>Back</button>
     </div>
@@ -149,7 +147,7 @@
             document.querySelector(".pris").textContent = menu.pris + " kr.";
             document.querySelector(".langbeskrivelse").textContent = menu.langbeskrivelse;
             document.querySelector(".oprindelsesregion").textContent = menu.oprindelsesregion;
-            document.querySelector(".billede").src = medieurl + menu.billede;
+            document.querySelector("img").src = medieurl + menu.billede;
             document.querySelector("button").addEventListener("click", tilbageTilMenu);
 
         }
@@ -157,9 +155,6 @@
         function tilbageTilMenu() {
             history.back();
         }
-
     </script>
 
-</body>
-
-</html>
+</body></html>
