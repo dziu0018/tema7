@@ -4,49 +4,161 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Babushka</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: sans-serif;
-            background: #897d6d;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cardo', serif;
+            background-color: #ffffff;
+            background-repeat: no-repeat;
+        }
+
+        h2 {
+            font-family: 'Cardo', serif;
+        }
+
+        p {
+            font-family: 'Open Sans', sans-serif;
         }
 
         img {
             width: 100%;
         }
 
-        #liste {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            grid-gap: 1em;
-            margin: 2em;
-        }
-
-        .person {
-            padding: 1em;
-            border: 1px solid;
-            border-radius: 1em;
-        }
 
         .valgt {
-            background-color: #ac1b1b;
+            background-color: #ac1b42;
             color: white;
             font-weight: 600;
+            transition: 1s;
+        }
+
+
+        #liste {
+            width: 100%;
+            background-color: #ffffff;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 1em;
+            padding-top: 1vw;
+            padding-bottom: 2.5rem;
         }
 
         article {
-            border: 4px solid black;
-            border-radius: 10px;
             padding: 10px;
-            background-color: antiquewhite;
+            background-color: #ffffff;
             cursor: pointer;
         }
 
+        header {
+            text-align: center;
+            z-index: 10;
+            position: fixed;
+            background-color: #e0d7bc;
+            width: 100%;
+            padding: 10px;
+            border: 0px;
+
+
+
+        }
+
         button {
-            background-color: antiquewhite;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #e0d7bc;
             padding: 10px;
             font-weight: 600;
             cursor: pointer;
+            border: 0px;
+            margin-right: 4px;
+            margin-left: 4px;
+            border: 0px;
+        }
+
+        button:focus{
+            border: 0px;
+        }
+
+        .splash {
+            z-index: -10;
+            position: fixed;
+            background-image: url(babushka-style.png);
+            background-size: cover;
+            width: 100%;
+        }
+
+        h1 {
+            padding-top: 70px;
+            color: white;
+            text-align: center;
+            font-size: 6vw;
+            font-family: 'Unica One', cursive;
+        }
+
+        .page-body {
+            position: relative;
+            top: 25.5em;
+            width: 100%;
+
+        }
+
+        footer {
+            width: 100%;
+            background-color: #e0d7bc;
+            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .box1{
+            grid-column-start: 3;
+        }
+
+        .box2{
+            grid-column-start: 4;
+        }
+
+
+        @media (max-width: 600px) {
+            .splash {
+                background-size: contain;
+                background-position: right;
+            }
+
+            h1 {
+                font-size: 9vw;
+            }
+
+            .page-body {
+            top: 12.5em;
+        }
+
+            footer{
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                font-size: 13px;
+                grid-gap: 1px;
+            }
+
+            .box1{
+            grid-column-start: 2;
+        }
+
+        .box2{
+            grid-column-start: 3;
+        }
+
+
         }
 
     </style>
@@ -56,33 +168,43 @@
 <body>
 
     <header>
-        <h1>Alle</h1>
+        <nav>
+            <button data-kategori="alle" class="valgt">Alle</button>
+            <button data-kategori="forretter">Forretter</button>
+            <button data-kategori="hovedretter">Hovedretter</button>
+            <button data-kategori="desserter">Desserter</button>
+            <button data-kategori="drikkevarer">Drikkevarer</button>
+        </nav>
+
     </header>
 
-    <nav>
-        <button data-kategori="alle" class="valgt">Alle</button>
-        <button data-kategori="forretter">Forretter</button>
-        <button data-kategori="hovedretter">Hovedretter</button>
-        <button data-kategori="desserter">Desserter</button>
-        <button data-kategori="drikkevarer">Drikkevarer</button>
-    </nav>
+    <div class="splash">
+        <h1>Bistro Babushka</h1>
+    </div>
 
-    <section id="liste"></section>
+    <div class="page-body">
+        <section id="liste">
+        </section>
+        <template>
+            <article class="menu">
+                <img src="" alt="" class="billede">
+                <h2 class="navn"></h2>
+                <p class="pris"></p>
+                <p class="kortbeskrivelse"></p>
+                <p class="langbeskrivelse"></p>
+                <p class="oprindelsesregion"></p>
+            </article>
+        </template>
 
-    <template>
-        <article class="menu">
-            <img src="" alt="" class="billede">
-            <h2 class="navn"></h2>
-            <p class="pris"></p>
-            <p class="kortbeskrivelse"></p>
-            <p class="langbeskrivelse"></p>
-            <p class="oprindelsesregion"></p>
-        </article>
-    </template>
-
+        <footer>
+            <div class="box1">Adresse: <br> Grønnegade 97 <br> 1234 København K</div>
+            <div class="box2">
+                Åbningstider: <br> Mandag - fredag 10:30 - 22:00 <br> Lørdag 12:00 - 23:00</div>
+        </footer>
+    </div>
 
     <script>
-        const header = document.querySelector("header h1");
+        const header = document.querySelector("h3");
         const medieurl = "https://babushka-dd8a.restdb.io/media/";
         const myHeaders = {
 
@@ -95,7 +217,7 @@
 
         // første funktion der kaldes efter DOM er loaded
         function start() {
-            const filterKnapper = document.querySelectorAll("nav button");
+            const filterKnapper = document.querySelectorAll("header nav button");
             filterKnapper.forEach(knap => knap.addEventListener("click", filtrerPersoner));
             loadJSON();
         }
@@ -104,7 +226,6 @@
             filter = this.dataset.kategori;
             document.querySelector(".valgt").classList.remove("valgt");
             this.classList.add("valgt");
-            header.textContent = this.textContent;
             visMenuer();
         }
 

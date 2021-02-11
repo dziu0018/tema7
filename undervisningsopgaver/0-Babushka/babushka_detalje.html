@@ -4,50 +4,96 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Babushka</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
     <style>
         body {
-            background: #897d6d;
+            background: #c6bca1;
             font-family: sans-serif;
-            padding-right: 30vw;
-            padding-left: 30vw;
+            margin: 0;
+            padding: 0;
 
+        }
+
+        h2 {
+            font-family: 'Cardo', serif;
+        }
+
+        p {
+            font-family: 'Open Sans', sans-serif;
         }
 
         img {
             width: 100%;
         }
 
-        #liste {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            grid-gap: 1em;
-            margin: 2em;
+        .wrapper {
+            margin-left: 30vw;
+            margin-right: 30vw;
         }
 
         article {
-            border: 2px solid black;
+            margin-top: 20px;
             padding: 10px;
-            background-color: antiquewhite;
-        }
-
-        .person {
-            padding: 1em;
-            border: 1px solid;
-            border-radius: 1em;
+            background-color: #ffffff;
+            grid-column-start: 2;
         }
 
         .valgt {
-            background-color: #ac1b1b;
+            background-color: #ac1b42;
+            color: white;
+            font-weight: 600;
         }
 
         button {
-            margin-top: 20px;
+            background-color: #ac1b42;
             padding: 10px;
             font-weight: 600;
-            background-color: #ac1b1b;
-            color: white;
             cursor: pointer;
+            border: 0px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #e0d7bc;
+            padding: 5px;
+            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .box1 {
+            grid-column-start: 3;
+        }
+
+        .box2 {
+            grid-column-start: 4;
+        }
+
+        @media (max-width: 600px) {
+            footer {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                font-size: 13px;
+                grid-gap: 1px;
+            }
+
+            .box1 {
+                grid-column-start: 2;
+            }
+
+            .box2 {
+                grid-column-start: 3;
+            }
+
+
         }
 
     </style>
@@ -56,19 +102,28 @@
 
 <body>
 
-    <header>
-    </header>
+    <div class="wrapper">
+        <header>
+        </header>
 
-    <section id="liste"></section>
-    <article class="menu">
-        <h2 class="navn"></h2>
-        <img src="" alt="" class="billede">
-        <p class="pris"></p>
-        <p class="kortbeskrivelse"></p>
-        <p class="langbeskrivelse"></p>
-        <p class="oprindelsesregion"></p>
-    </article>
-    <button>Back</button>
+        <section id="liste"></section>
+
+        <article>
+             <img src="" alt="mad" class="billede">
+                <h2 class="navn"></h2>
+                <p class="pris"></p>
+                <p class="kortbeskrivelse"></p>
+                <p class="langbeskrivelse"></p>
+                <p class="oprindelsesregion"></p>
+        </article>
+        <button>Back</button>
+    </div>
+    <footer>
+        <div class="box1">Adresse: <br> Grønnegade 97 <br> 1234 København K</div>
+        <div class="box2">
+            Åbningstider: <br> Mandag - fredag 10:30 - 22:00 <br> Lørdag 12:00 - 23:00</div>
+
+    </footer>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
